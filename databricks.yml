@@ -4,15 +4,15 @@ bundle:
 targets:
   development:
     workspace:
-      host: ${var.dev_workspace_url}
+      host: "https://adb-3926792307180734.14.azuredatabricks.net"
     
   test:
     workspace:
-      host: ${var.test_workspace_url}
+      host: "https://adb-1664798693105110.10.azuredatabricks.net"
     
   production:
     workspace:
-      host: ${var.prod_workspace_url}
+      host: "https://adb-2946519586949099.19.azuredatabricks.net"
 
 variables:
   # Workspace URLs
