@@ -26,7 +26,7 @@ prompt_with_default() {
     local default="$2"
     local input
     
-    echo -e -n "${YELLOW}$prompt [${default}]: ${NC}"
+    echo -n "$prompt [$default]: "
     read input
     echo "${input:-$default}"
 }
@@ -43,7 +43,7 @@ echo -e "${GREEN}Select target environment:${NC}"
 echo -e "1. Development"
 echo -e "2. Test"
 echo -e "3. Production"
-echo -e -n "${YELLOW}Enter your choice [1]: ${NC}"
+echo -n "Enter your choice [1]: "
 read choice
 
 case $choice in
