@@ -75,13 +75,13 @@ DEFAULT_TOKEN=""
 
 # Set default values based on target environment
 if [ "${TARGET}" == "development" ]; then
-    DEFAULT_WORKSPACE_URL="https://adb-3926792307180734.14.azuredatabricks.net"
+    DEFAULT_WORKSPACE_URL="${DATABRICKS_HOST_DEV:-}"
     # Do not set default token, will prompt if not in environment
 elif [ "${TARGET}" == "test" ]; then
-    DEFAULT_WORKSPACE_URL="https://adb-1664798693105110.10.azuredatabricks.net"
+    DEFAULT_WORKSPACE_URL="${DATABRICKS_HOST_TEST:-}"
     # Do not set default token, will prompt if not in environment
 elif [ "${TARGET}" == "production" ]; then
-    DEFAULT_WORKSPACE_URL="https://adb-2946519586949099.19.azuredatabricks.net"
+    DEFAULT_WORKSPACE_URL="${DATABRICKS_HOST_PROD:-}"
     # Do not set default token, will prompt if not in environment
 fi
 

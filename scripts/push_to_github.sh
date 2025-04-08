@@ -21,7 +21,7 @@ if ! command -v git &> /dev/null; then
 fi
 
 # GitHub repository information
-GITHUB_REPO="https://github.com/vimaljosehere/dab-framework"
+GITHUB_REPO="${GITHUB_REPO:-https://github.com/vimaljosehere/dab-framework}"
 # Use environment variable or prompt for token if not set
 if [ -z "${GITHUB_TOKEN}" ]; then
     echo -e "${YELLOW}GitHub token not found in environment.${NC}"
@@ -74,13 +74,15 @@ fi
 
 # Add remote repository
 echo "Adding remote repository..."
-git remote add origin https://${GITHUB_TOKEN}@github.com/vimaljosehere/dab-framework.git
+# Extract the repository path from GITHUB_REPO
+REPO_PATH=$(echo $GITHUB_REPO | sed 's/https:\/\/github.com\///')
+git remote add origin https://${GITHUB_TOKEN}@github.com/${REPO_PATH}.git
 
 if [ $? -ne 0 ]; then
     # Check if remote already exists
     if git remote | grep -q "^origin$"; then
         echo "Remote 'origin' already exists. Updating URL..."
-        git remote set-url origin https://${GITHUB_TOKEN}@github.com/vimaljosehere/dab-framework.git
+        git remote set-url origin https://${GITHUB_TOKEN}@github.com/${REPO_PATH}.git
         
         if [ $? -ne 0 ]; then
             echo -e "${RED}Error: Failed to update remote URL.${NC}"
