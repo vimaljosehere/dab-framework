@@ -1,0 +1,96 @@
+bundle:
+  name: dab-etl-framework
+
+targets:
+  development:
+    workspace:
+      host: ${var.dev_workspace_url}
+    
+  test:
+    workspace:
+      host: ${var.test_workspace_url}
+    
+  production:
+    workspace:
+      host: ${var.prod_workspace_url}
+
+variables:
+  # Workspace URLs
+  dev_workspace_url:
+    type: string
+    default: "https://adb-3926792307180734.14.azuredatabricks.net"
+  test_workspace_url:
+    type: string
+    default: "https://adb-1664798693105110.10.azuredatabricks.net"
+  prod_workspace_url:
+    type: string
+    default: "https://adb-2946519586949099.19.azuredatabricks.net"
+  
+  # Catalogs
+  dev_catalog:
+    type: string
+    default: "dev_catalog"
+  test_catalog:
+    type: string
+    default: "test_catalog"
+  prod_catalog:
+    type: string
+    default: "prod_catalog"
+  
+  # Schemas
+  dev_schema:
+    type: string
+    default: "dab_etl_framework"
+  test_schema:
+    type: string
+    default: "dab_etl_framework"
+  prod_schema:
+    type: string
+    default: "dab_etl_framework"
+  
+  
+  # Root paths
+  root_path:
+    type: string
+    default: "/Shared/dab-etl-framework"
+  dev_root_path:
+    type: string
+    default: "/Shared/dab-etl-framework/dev"
+  test_root_path:
+    type: string
+    default: "/Shared/dab-etl-framework/test"
+  prod_root_path:
+    type: string
+    default: "/Shared/dab-etl-framework/prod"
+  
+  # Data paths
+  source_data_path:
+    type: string
+    default: "/Workspace/Repos/dab-etl-framework/data/sample_data.csv"
+  
+  # Table names
+  bronze_table_name:
+    type: string
+    default: "bronze_users"
+  silver_table_name:
+    type: string
+    default: "silver_users"
+  gold_user_dim_table_name:
+    type: string
+    default: "gold_user_dimension"
+  gold_status_summary_table_name:
+    type: string
+    default: "gold_status_summary"
+  gold_city_distribution_table_name:
+    type: string
+    default: "gold_city_distribution"
+  
+  # Cluster configurations
+  default_cluster:
+    type: object
+    default:
+      spark_version: "13.3.x-scala2.12"
+      node_type_id: "Standard_DS3_v2"
+      driver_node_type_id: "Standard_DS3_v2"
+      num_workers: 1
+      autotermination_minutes: 20

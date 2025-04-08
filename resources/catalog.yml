@@ -1,0 +1,34 @@
+catalogs:
+  dev_catalog:
+    name: ${var.dev_catalog}
+    comment: "Development catalog for the DAB ETL framework"
+    properties:
+      purpose: "development"
+  
+  test_catalog:
+    name: ${var.test_catalog}
+    comment: "Test catalog for the DAB ETL framework"
+    properties:
+      purpose: "testing"
+  
+  prod_catalog:
+    name: ${var.prod_catalog}
+    comment: "Production catalog for the DAB ETL framework"
+    properties:
+      purpose: "production"
+
+schemas:
+  dev_schema:
+    catalog_name: ${var.dev_catalog}
+    name: ${var.dev_schema}
+    comment: "Development schema for the DAB ETL framework"
+  
+  test_schema:
+    catalog_name: ${var.test_catalog}
+    name: ${var.test_schema}
+    comment: "Test schema for the DAB ETL framework"
+  
+  prod_schema:
+    catalog_name: ${var.prod_catalog}
+    name: ${var.prod_schema}
+    comment: "Production schema for the DAB ETL framework"
